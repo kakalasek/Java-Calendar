@@ -1,7 +1,7 @@
 package windows;
 
-import windows.calendarPanel.CalendarPanel;
-import windows.calendarPanel.UpperPanel;
+import windows.panels.CalendarPanel;
+import windows.panels.UpperPanel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,13 +11,13 @@ public class Home extends JFrame {
     public Home(){
         /* Constants */
 
-        final int BASE_WIDTH = 1200;
+        final int BASE_WIDTH = 1500;
         final int UPPER_BASE_HEIGHT = 100;
-        final int CALENDAR_BASE_HEIGHT = 700;
+        final int CALENDAR_BASE_HEIGHT = 800;
 
         /* Pre Setup */
 
-        this.setTitle("Home");
+        this.setTitle("Kalendář");
 
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
@@ -32,7 +32,7 @@ public class Home extends JFrame {
 
         // Upper Panel
 
-        JPanel upperPanel = new UpperPanel(new FlowLayout(), BASE_WIDTH, UPPER_BASE_HEIGHT);
+        JPanel upperPanel = new UpperPanel(BASE_WIDTH, UPPER_BASE_HEIGHT);
         gbc.weighty = 0.0;
         gbc.gridx = 0;
         gbc.gridy = 0;
@@ -40,7 +40,7 @@ public class Home extends JFrame {
 
         // Calendar
 
-        JPanel calendarPanel = new CalendarPanel(new GridBagLayout(), BASE_WIDTH, CALENDAR_BASE_HEIGHT);
+        JPanel calendarPanel = new CalendarPanel(BASE_WIDTH, CALENDAR_BASE_HEIGHT);
         calendarPanel.setMinimumSize(new Dimension(BASE_WIDTH, CALENDAR_BASE_HEIGHT));
         calendarPanel.setPreferredSize(new Dimension(BASE_WIDTH, CALENDAR_BASE_HEIGHT));
         gbc.weighty = 1.0;

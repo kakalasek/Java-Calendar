@@ -1,16 +1,16 @@
-package windows.calendarPanel;
+package windows.panels.subpanels;
 
 import javax.swing.*;
+import javax.swing.border.CompoundBorder;
 import java.awt.*;
 
-public class UpperPanel extends JPanel {
+public class LowerPart extends JPanel {
 
-    public UpperPanel(LayoutManager layoutManager, int baseWidth, int baseHeight) {
-        this.setLayout(layoutManager);
+    public LowerPart(int baseWidth, int baseHeight){
 
-        this.setBackground(Color.red);
         this.setMinimumSize(new Dimension(baseWidth, baseHeight));
         this.setPreferredSize(new Dimension(baseWidth, baseHeight));
         this.setMaximumSize(new Dimension(baseWidth, baseHeight));
+
     }
 }
