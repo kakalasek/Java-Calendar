@@ -10,7 +10,7 @@ public class DayPanel extends JPanel {
     public DayPanel(int baseWidth, int baseHeight){
         /* Variables */
 
-        final int BASE_UPPER_HEIGHT = 20;
+        final int BASE_UPPER_HEIGHT = 40;
 
         /* Base Setup */
 

@@ -25,9 +25,15 @@ public class UpperPanel extends JPanel {
         /* Components */
 
         JComboBox<String> monthsBox = new JComboBox<>(months);
+        monthsBox.setMinimumSize(new Dimension(100, 30));
+        monthsBox.setPreferredSize(new Dimension(100, 30));
+        monthsBox.setMaximumSize(new Dimension(100, 30));
         this.add(monthsBox);
 
         JComboBox<String> yearsBox = new JComboBox<>(years);
+        yearsBox.setMinimumSize(new Dimension(100, 30));
+        yearsBox.setPreferredSize(new Dimension(100, 30));
+        yearsBox.setMaximumSize(new Dimension(100, 30));
         this.add(yearsBox);
     }
 }
