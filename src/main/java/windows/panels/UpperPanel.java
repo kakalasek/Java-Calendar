@@ -5,15 +5,21 @@ import calendarHandler.CalendarHandler;
 import javax.swing.*;
 import javax.swing.border.CompoundBorder;
 import java.awt.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class UpperPanel extends JPanel {
 
     public UpperPanel(int baseWidth, int baseHeight) {
         /* Variables */
+
+        final String[][] monthsAndYears = CalendarHandler.getMonths();
+        final String[] months = new String[12];
+
+        for(int i = 0; i < 12; i++){
+            months[i] = monthsAndYears[i][1] + " " + monthsAndYears[i][0];
+        }
+
+        final int MONTHS_BOX_WIDTH = 150;
 
         /* Base Setup */
 
@@ -27,16 +33,11 @@ public class UpperPanel extends JPanel {
 
         /* Components */
 
-        JComboBox<String> monthsBox = new JComboBox<>();
-        monthsBox.setMinimumSize(new Dimension(100, 30));
-        monthsBox.setPreferredSize(new Dimension(100, 30));
-        monthsBox.setMaximumSize(new Dimension(100, 30));
+        JComboBox<String> monthsBox = new JComboBox<>(months);
+        monthsBox.setMinimumSize(new Dimension(MONTHS_BOX_WIDTH, 30));
+        monthsBox.setPreferredSize(new Dimension(MONTHS_BOX_WIDTH, 30));
+        monthsBox.setMaximumSize(new Dimension(MONTHS_BOX_WIDTH, 30));
         this.add(monthsBox);
 
-        JComboBox<String> yearsBox = new JComboBox<>();
-        yearsBox.setMinimumSize(new Dimension(100, 30));
-        yearsBox.setPreferredSize(new Dimension(100, 30));
-        yearsBox.setMaximumSize(new Dimension(100, 30));
-        this.add(yearsBox);
     }
 }
