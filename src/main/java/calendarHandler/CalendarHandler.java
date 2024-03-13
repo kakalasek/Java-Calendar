@@ -1,9 +1,6 @@
 package calendarHandler;
 
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Dictionary;
-import java.util.HashMap;
+import java.util.*;
 
 public class CalendarHandler {
 
@@ -51,5 +48,21 @@ public class CalendarHandler {
         }
 
         return output;
+    }
+
+    public static String[][] getDays(){
+        calendar.setTime(date);
+
+        String[][] output = new String[12][31];
+
+        for(String[] month : output){
+            for(int i = 0; i < calendar.getActualMaximum(Calendar.DAY_OF_MONTH); i++){
+                month[i] = calendar.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.SHORT, new Locale("cs", "CZ")).toUpperCase();
+                calendar.roll(Calendar.DAY_OF_WEEK, true);
+            }
+            calendar.roll(Calendar.MONTH, true);
+        }
+
+       return output;
     }
 }
