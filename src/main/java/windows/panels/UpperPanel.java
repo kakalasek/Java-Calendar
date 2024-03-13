@@ -14,17 +14,7 @@ public class UpperPanel extends JPanel {
 
     public UpperPanel(int baseWidth, int baseHeight) {
         /* Variables */
-        HashMap<String, Integer> months = CalendarHandler.getMonths();
 
-        ArrayList<String> monthsInFirstMonth;
-        ArrayList<String> monthsInSecondMonth;
-
-        for(Map.Entry<String, Integer> entry : months.entrySet() ){
-
-            if(entry.getValue() == ){
-
-            }
-        }
         /* Base Setup */
 
         this.setLayout(new FlowLayout(FlowLayout.CENTER, 60, 40));
@@ -37,13 +27,13 @@ public class UpperPanel extends JPanel {
 
         /* Components */
 
-        JComboBox<String> monthsBox = new JComboBox<>(months);
+        JComboBox<String> monthsBox = new JComboBox<>();
         monthsBox.setMinimumSize(new Dimension(100, 30));
         monthsBox.setPreferredSize(new Dimension(100, 30));
         monthsBox.setMaximumSize(new Dimension(100, 30));
         this.add(monthsBox);
 
-        JComboBox<String> yearsBox = new JComboBox<>(years);
+        JComboBox<String> yearsBox = new JComboBox<>();
         yearsBox.setMinimumSize(new Dimension(100, 30));
         yearsBox.setPreferredSize(new Dimension(100, 30));
         yearsBox.setMaximumSize(new Dimension(100, 30));

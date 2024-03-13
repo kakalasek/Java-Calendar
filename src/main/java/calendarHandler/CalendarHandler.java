@@ -22,30 +22,29 @@ public class CalendarHandler {
             switch (calendar.get(Calendar.MONTH)) {
                 case 0: output[0] = String.valueOf(j); output[1] = "Leden";
                     break;
-                case 1: output[0] = String.valueOf(j); output[1] = "Leden";
+                case 1: output[0] = String.valueOf(j); output[1] = "Únor";
                     break;
-                case 2: output[0] = String.valueOf(j); output[1] = "Leden";
+                case 2: output[0] = String.valueOf(j); output[1] = "Březen";
                     break;
-                case 3: output[0] = String.valueOf(j); output[1] = "Leden";
+                case 3: output[0] = String.valueOf(j); output[1] = "Duben";
                     break;
-                case 4: output.put("Květen", j);
+                case 4: output[0] = String.valueOf(j); output[1] = "Květen";
                     break;
-                case 5: output.put("Červen", j);
+                case 5: output[0] = String.valueOf(j); output[1] = "Červen";
                     break;
-                case 6: output.put("Červenec", j);
+                case 6: output[0] = String.valueOf(j); output[1] = "Červenec";
                     break;
-                case 7: output.put("Srpen", j);
+                case 7: output[0] = String.valueOf(j); output[1] = "Srpen";
                     break;
-                case 8: output.put("Září", j);
+                case 8: output[0] = String.valueOf(j); output[1] = "Září";
                     break;
-                case 9: output.put("Říjen", j);
+                case 9: output[0] = String.valueOf(j); output[1] = "Říjen";
                     break;
-                case 10: output.put("Listopad", j);
+                case 10: output[0] = String.valueOf(j); output[1] = "Listopad";
                     break;
-                case 11: output.put("Prosinec", j);
+                case 11: output[0] = String.valueOf(j); output[1] = "Prosinec";
                     break;
             }
-
 
             calendar.roll(Calendar.MONTH, true);
             if(calendar.get(Calendar.MONTH) == Calendar.JANUARY) j += 1;
