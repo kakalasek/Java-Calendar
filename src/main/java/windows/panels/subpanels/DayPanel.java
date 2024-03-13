@@ -1,6 +1,7 @@
 package windows.panels.subpanels;
 
-import windows.panels.UpperPanel;
+import windows.panels.subpanels.parts.LowerPart;
+import windows.panels.subpanels.parts.UpperPart;
 
 import javax.swing.*;
 import java.awt.*;

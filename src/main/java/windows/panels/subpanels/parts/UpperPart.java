@@ -1,4 +1,4 @@
-package windows.panels.subpanels;
+package windows.panels.subpanels.parts;
 
 import windows.panels.UpperPanel;
 

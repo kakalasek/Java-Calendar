@@ -1,4 +1,4 @@
-package windows.panels.subpanels;
+package windows.panels.subpanels.parts;
 
 import javax.swing.*;
 import javax.swing.border.CompoundBorder;

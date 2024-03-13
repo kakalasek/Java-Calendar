@@ -1,17 +1,30 @@
 package windows.panels;
 
+import calendarHandler.CalendarHandler;
+
 import javax.swing.*;
 import javax.swing.border.CompoundBorder;
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 
 public class UpperPanel extends JPanel {
 
     public UpperPanel(int baseWidth, int baseHeight) {
         /* Variables */
+        HashMap<String, Integer> months = CalendarHandler.getMonths();
 
-        String[] months = {"Leden", "Únor", "Březen", "Duben", "Květen", "Červen", "Červenec", "Srpen", "Září", "Říjen", "Listopad", "Prosinec"};
-        String[] years = {"2024", "2023"};
+        ArrayList<String> monthsInFirstMonth;
+        ArrayList<String> monthsInSecondMonth;
 
+        for(Map.Entry<String, Integer> entry : months.entrySet() ){
+
+            if(entry.getValue() == ){
+
+            }
+        }
         /* Base Setup */
 
         this.setLayout(new FlowLayout(FlowLayout.CENTER, 60, 40));
