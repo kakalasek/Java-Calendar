@@ -10,8 +10,8 @@ public class CalendarHandler {
     private static final Calendar calendar = Calendar.getInstance();
     private static final Date date = new Date();
 
-    public static String[] getMonths() {
-        String[] output = new String[12];
+    public static String[][] getMonths() {
+        String[][] output = new String[12][2];
 
         calendar.setTime(date);
 
@@ -20,29 +20,29 @@ public class CalendarHandler {
         for (int i = 0; i < 12; i++) {
 
             switch (calendar.get(Calendar.MONTH)) {
-                case 0: output[0] = String.valueOf(j); output[1] = "Leden";
+                case 0: output[i][0] = String.valueOf(j); output[i][1] = "Leden";
                     break;
-                case 1: output[0] = String.valueOf(j); output[1] = "Únor";
+                case 1: output[i][0] = String.valueOf(j); output[i][1] = "Únor";
                     break;
-                case 2: output[0] = String.valueOf(j); output[1] = "Březen";
+                case 2: output[i][0] = String.valueOf(j); output[i][1] = "Březen";
                     break;
-                case 3: output[0] = String.valueOf(j); output[1] = "Duben";
+                case 3: output[i][0] = String.valueOf(j); output[i][1] = "Duben";
                     break;
-                case 4: output[0] = String.valueOf(j); output[1] = "Květen";
+                case 4: output[i][0] = String.valueOf(j); output[i][1] = "Květen";
                     break;
-                case 5: output[0] = String.valueOf(j); output[1] = "Červen";
+                case 5: output[i][0] = String.valueOf(j); output[i][1] = "Červen";
                     break;
-                case 6: output[0] = String.valueOf(j); output[1] = "Červenec";
+                case 6: output[i][0] = String.valueOf(j); output[i][1] = "Červenec";
                     break;
-                case 7: output[0] = String.valueOf(j); output[1] = "Srpen";
+                case 7: output[i][0] = String.valueOf(j); output[i][1] = "Srpen";
                     break;
-                case 8: output[0] = String.valueOf(j); output[1] = "Září";
+                case 8: output[i][0] = String.valueOf(j); output[i][1] = "Září";
                     break;
-                case 9: output[0] = String.valueOf(j); output[1] = "Říjen";
+                case 9: output[i][0] = String.valueOf(j); output[i][1] = "Říjen";
                     break;
-                case 10: output[0] = String.valueOf(j); output[1] = "Listopad";
+                case 10: output[i][0] = String.valueOf(j); output[i][1] = "Listopad";
                     break;
-                case 11: output[0] = String.valueOf(j); output[1] = "Prosinec";
+                case 11: output[i][0] = String.valueOf(j); output[i][1] = "Prosinec";
                     break;
             }
 
