@@ -5,15 +5,16 @@ import calendarHandler.CalendarHandler;
 import javax.swing.*;
 import javax.swing.border.CompoundBorder;
 import java.awt.*;
-import java.util.*;
+import java.util.Objects;
 
 public class UpperPanel extends JPanel {
 
+    private final JComboBox<String> monthsBox;
+    private final String[][] monthsAndYears = CalendarHandler.getMonths();
+    private final String[] months = new String[12];
+
     public UpperPanel(int baseWidth, int baseHeight) {
         /* Variables */
-
-        final String[][] monthsAndYears = CalendarHandler.getMonths();
-        final String[] months = new String[12];
 
         for(int i = 0; i < 12; i++){
             months[i] = monthsAndYears[i][1] + " " + monthsAndYears[i][0];
@@ -33,11 +34,14 @@ public class UpperPanel extends JPanel {
 
         /* Components */
 
-        JComboBox<String> monthsBox = new JComboBox<>(months);
+        monthsBox = new JComboBox<>(months);
         monthsBox.setMinimumSize(new Dimension(MONTHS_BOX_WIDTH, 30));
         monthsBox.setPreferredSize(new Dimension(MONTHS_BOX_WIDTH, 30));
         monthsBox.setMaximumSize(new Dimension(MONTHS_BOX_WIDTH, 30));
         this.add(monthsBox);
+    }
 
+    public String[] getCurrentMonthYear(){
+        return Objects.requireNonNull(monthsBox.getSelectedItem()).toString().split(" ");
     }
 }

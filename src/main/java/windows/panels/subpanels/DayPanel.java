@@ -1,5 +1,6 @@
 package windows.panels.subpanels;
 
+import calendarHandler.CalendarHandler;
 import windows.panels.subpanels.parts.LowerPart;
 import windows.panels.subpanels.parts.UpperPart;
 
@@ -8,7 +9,7 @@ import java.awt.*;
 
 public class DayPanel extends JPanel {
 
-    public DayPanel(int baseWidth, int baseHeight){
+    public DayPanel(int baseWidth, int baseHeight, String[] day){
         /* Variables */
 
         final int BASE_UPPER_HEIGHT = 40;
@@ -28,7 +29,7 @@ public class DayPanel extends JPanel {
 
         /* Upper Part */
 
-        JPanel upperPart = new UpperPart(this.getWidth(), BASE_UPPER_HEIGHT);
+        JPanel upperPart = new UpperPart(this.getWidth(), BASE_UPPER_HEIGHT, day);
         gbc.weighty = 0.0;
         gbc.gridx = 0;
         gbc.gridy = 0;

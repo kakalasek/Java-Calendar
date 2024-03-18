@@ -1,5 +1,6 @@
 package windows.panels.subpanels.parts;
 
+import calendarHandler.CalendarHandler;
 import windows.panels.UpperPanel;
 
 import javax.swing.*;
@@ -8,7 +9,10 @@ import java.awt.*;
 
 public class UpperPart extends JPanel {
 
-    public UpperPart(int baseWidth, int baseHeight){
+    public UpperPart(int baseWidth, int baseHeight, String[] day){
+
+        /* Variables */
+
 
         /* Base Setup */
 
@@ -22,10 +26,10 @@ public class UpperPart extends JPanel {
 
         /* Components */
 
-        JLabel dayOfWeek = new JLabel("PO");
+        JLabel dayOfWeek = new JLabel(day[0]);
         this.add(dayOfWeek, BorderLayout.WEST);
 
-        JLabel dayInMonth = new JLabel("12");
+        JLabel dayInMonth = new JLabel(day[1]);
         this.add(dayInMonth, BorderLayout.EAST);
     }
 }
