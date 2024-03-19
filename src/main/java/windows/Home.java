@@ -33,6 +33,11 @@ public class Home extends JFrame {
         // Upper Panel
 
         UpperPanel upperPanel = new UpperPanel(BASE_WIDTH, UPPER_BASE_HEIGHT);
+
+        CalendarPanel calendarPanel = new CalendarPanel(BASE_WIDTH, CALENDAR_BASE_HEIGHT, upperPanel::getCurrentMonthYear);
+
+        upperPanel.setCalendar(calendarPanel);
+
         gbc.weighty = 0.0;
         gbc.gridx = 0;
         gbc.gridy = 0;
@@ -40,7 +45,6 @@ public class Home extends JFrame {
 
         // Calendar
 
-        JPanel calendarPanel = new CalendarPanel(BASE_WIDTH, CALENDAR_BASE_HEIGHT, upperPanel::getCurrentMonthYear);
         calendarPanel.setMinimumSize(new Dimension(BASE_WIDTH, CALENDAR_BASE_HEIGHT));
         calendarPanel.setPreferredSize(new Dimension(BASE_WIDTH, CALENDAR_BASE_HEIGHT));
         gbc.weighty = 1.0;
