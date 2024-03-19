@@ -5,6 +5,8 @@ import calendarHandler.CalendarHandler;
 import javax.swing.*;
 import javax.swing.border.CompoundBorder;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Objects;
 
 public class UpperPanel extends JPanel {
@@ -12,6 +14,8 @@ public class UpperPanel extends JPanel {
     private final JComboBox<String> monthsBox;
     private final String[][] monthsAndYears = CalendarHandler.getMonths();
     private final String[] months = new String[12];
+
+    private CalendarPanel calendar;
 
     public UpperPanel(int baseWidth, int baseHeight) {
         /* Variables */
@@ -38,10 +42,23 @@ public class UpperPanel extends JPanel {
         monthsBox.setMinimumSize(new Dimension(MONTHS_BOX_WIDTH, 30));
         monthsBox.setPreferredSize(new Dimension(MONTHS_BOX_WIDTH, 30));
         monthsBox.setMaximumSize(new Dimension(MONTHS_BOX_WIDTH, 30));
+
+        monthsBox.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                calendar.reset();
+            }
+        });
+
         this.add(monthsBox);
     }
 
     public String[] getCurrentMonthYear(){
         return Objects.requireNonNull(monthsBox.getSelectedItem()).toString().split(" ");
     }
+
+    public void setCalendar(CalendarPanel calendar){
+        this.calendar = calendar;
+    }
+
 }
