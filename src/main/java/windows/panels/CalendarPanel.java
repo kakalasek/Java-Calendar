@@ -10,20 +10,13 @@ import java.util.function.Supplier;
 
 public class CalendarPanel extends JPanel {
 
-    private final Supplier<String[]> getMonthYear;
-    private String currentMonth;
-    private int currentYear;
-
-    private final int DAY_WIDTH = 200;
-    private final int DAY_HEIGHT = 150;
-
     public CalendarPanel(int baseWidth, int baseHeight, Supplier<String[]> getMonthYear){
         /* Variables */
 
-        this.getMonthYear = getMonthYear;
-
-        this.currentMonth = getMonthYear.get()[0];
-        this.currentYear = Integer.parseInt(getMonthYear.get()[1]);
+        final int DAY_WIDTH = 200;
+        final int DAY_HEIGHT = 150;
+        final String currentMonth = getMonthYear.get()[0];
+        final int currentYear = Integer.parseInt(getMonthYear.get()[1]);
 
         /* Base Setup */
 
@@ -34,20 +27,7 @@ public class CalendarPanel extends JPanel {
         this.setMaximumSize(new Dimension(baseWidth, baseHeight));
 
         for(int i = 0; i < CalendarHandler.getDaysInMonth(currentMonth, currentYear); i++){
-            this.add(new DayPanel(DAY_WIDTH, DAY_HEIGHT, new String[]{String.valueOf(i+1), CalendarHandler.getDayOfWeek(i+1, currentMonth, currentYear)}, getMonthYear.get()));
+            this.add(new DayPanel(DAY_WIDTH, DAY_HEIGHT, new String[]{String.valueOf(i+1), CalendarHandler.getDayOfWeek(i+1, currentMonth, currentYear)}));
         }
-    }
-
-    public void reset(){
-        this.removeAll();
-        this.currentMonth = getMonthYear.get()[0];
-        this.currentYear = Integer.parseInt(getMonthYear.get()[1]);
-
-        for(int i = 0; i < CalendarHandler.getDaysInMonth(currentMonth, currentYear); i++){
-            this.add(new DayPanel(DAY_WIDTH, DAY_HEIGHT, new String[]{String.valueOf(i+1), CalendarHandler.getDayOfWeek(i+1, currentMonth, currentYear)}, getMonthYear.get()));
-        }
-
-        this.revalidate();
-        this.repaint();
     }
 }
