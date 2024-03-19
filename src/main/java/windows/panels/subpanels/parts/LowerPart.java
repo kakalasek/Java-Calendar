@@ -1,11 +1,14 @@
 package windows.panels.subpanels.parts;
 
+import fileHandler.FileHandler;
 import org.json.simple.JSONObject;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
+import java.io.File;
+import java.io.IOException;
 
 public class LowerPart extends JPanel {
 
@@ -13,13 +16,13 @@ public class LowerPart extends JPanel {
     String[] day;
     String[] monthAndYear;
 
-    private void saveNote(){
+    private void saveNote() throws IOException {
         JSONObject file = new JSONObject();
         String identifier = monthAndYear[1] + monthAndYear[0] + day[0];
 
         file.put(identifier, notes.getText());
 
-        System.out.println(file);
+        FileHandler.writeFile("src/main/notes/logs", file.toJSONString());
     }
 
     public LowerPart(int baseWidth, int baseHeight, String[] day, String[] monthAndYear){
@@ -50,7 +53,11 @@ public class LowerPart extends JPanel {
 
             @Override
             public void focusLost(FocusEvent e) {
-                saveNote();
+                try {
+                    saveNote();
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
             }
         });
     }
