@@ -2,6 +2,7 @@ package windows.panels.subpanels.parts;
 
 import fileHandler.FileHandler;
 import org.json.simple.JSONObject;
+import org.json.simple.JSONValue;
 
 import javax.swing.*;
 import java.awt.*;
@@ -16,49 +17,85 @@ public class LowerPart extends JPanel {
     String[] day;
     String[] monthAndYear;
 
+    String noteFilepath = "src/main/notes/notes";
+
     private void saveNote() throws IOException {
-        JSONObject file = new JSONObject();
+        String s = FileHandler.readFile(noteFilepath);
+        JSONObject file;
+
+        if(s != null) {
+            Object o = JSONValue.parse(s);
+            file = (JSONObject) o;
+        } else {
+            file = new JSONObject();
+        }
         String identifier = monthAndYear[1] + monthAndYear[0] + day[0];
 
         file.put(identifier, notes.getText());
 
-        FileHandler.writeFile("src/main/notes/logs", file.toJSONString());
+        FileHandler.clearFile(noteFilepath);
+
+        FileHandler.writeFile(noteFilepath, file.toJSONString());
     }
 
-    public LowerPart(int baseWidth, int baseHeight, String[] day, String[] monthAndYear){
+    private String readNote() throws IOException {
+        String s = FileHandler.readFile(noteFilepath);
+        JSONObject file;
 
-        this.day = day;
-        this.monthAndYear = monthAndYear;
+        if(s != null) {
+            Object o = JSONValue.parse(s);
+            file = (JSONObject) o;
+        } else {
+            file = new JSONObject();
+        }
+        String identifier = monthAndYear[1] + monthAndYear[0] + day[0];
 
-        /* Base Setup */
+        if(file.containsKey(identifier)){
+            return (String)file.get(identifier);
+        }
+        return "";
+    }
 
-        this.setLayout(new BorderLayout());
+    public LowerPart(int baseWidth, int baseHeight, String[] day, String[] monthAndYear) {
 
-        this.setMinimumSize(new Dimension(baseWidth, baseHeight));
-        this.setPreferredSize(new Dimension(baseWidth, baseHeight));
-        this.setMaximumSize(new Dimension(baseWidth, baseHeight));
+        try {
+            this.day = day;
+            this.monthAndYear = monthAndYear;
 
-        /* Components */
+            /* Base Setup */
 
-        notes = new JTextArea();
-        notes.setLineWrap(true);
-        notes.setWrapStyleWord(true);
-        this.add(notes, BorderLayout.CENTER);
+            this.setLayout(new BorderLayout());
 
-        notes.addFocusListener(new FocusListener() {
-            @Override
-            public void focusGained(FocusEvent e) {
+            this.setMinimumSize(new Dimension(baseWidth, baseHeight));
+            this.setPreferredSize(new Dimension(baseWidth, baseHeight));
+            this.setMaximumSize(new Dimension(baseWidth, baseHeight));
 
-            }
+            /* Components */
 
-            @Override
-            public void focusLost(FocusEvent e) {
-                try {
-                    saveNote();
-                } catch (IOException ex) {
-                    throw new RuntimeException(ex);
+            notes = new JTextArea();
+            notes.setLineWrap(true);
+            notes.setWrapStyleWord(true);
+            notes.setText(readNote());
+            this.add(notes, BorderLayout.CENTER);
+
+            notes.addFocusListener(new FocusListener() {
+                @Override
+                public void focusGained(FocusEvent e) {
+
                 }
-            }
-        });
+
+                @Override
+                public void focusLost(FocusEvent e) {
+                    try {
+                        saveNote();
+                    } catch (IOException ex) {
+                        throw new RuntimeException(ex);
+                    }
+                }
+            });
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
