@@ -1,7 +1,4 @@
-package windows.panels.subpanels.parts;
-
-import calendarHandler.CalendarHandler;
-import windows.panels.UpperPanel;
+package windows.calendarWindow.panels.subpanels.parts;
 
 import javax.swing.*;
 import javax.swing.border.CompoundBorder;

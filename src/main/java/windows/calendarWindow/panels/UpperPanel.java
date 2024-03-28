@@ -1,4 +1,4 @@
-package windows.panels;
+package windows.calendarWindow.panels;
 
 import calendarHandler.CalendarHandler;
 

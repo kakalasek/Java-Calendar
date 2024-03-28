@@ -1,4 +1,4 @@
-package windows.panels.subpanels.parts;
+package windows.calendarWindow.panels.subpanels.parts;
 
 import fileHandler.FileHandler;
 import org.json.simple.JSONObject;
@@ -8,7 +8,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
-import java.io.File;
 import java.io.IOException;
 
 public class LowerPart extends JPanel {

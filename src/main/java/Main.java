@@ -1,12 +1,9 @@
-import calendarHandler.CalendarHandler;
-import windows.Home;
-
-import java.time.LocalDate;
-import java.util.Calendar;
-import java.util.Date;
+import windows.calendarWindow.Home;
+import windows.loginWindow.Login;
 
 public class Main {
     public static void main(String[] args) {
-        new Home();
+        //new Home();
+        new Login();
     }
 }

@@ -1,11 +1,10 @@
-package windows.panels;
+package windows.calendarWindow.panels;
 
 import calendarHandler.CalendarHandler;
-import windows.panels.subpanels.DayPanel;
+import windows.calendarWindow.panels.subpanels.DayPanel;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.function.Function;
 import java.util.function.Supplier;
 
 public class CalendarPanel extends JPanel {

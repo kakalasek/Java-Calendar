@@ -1,7 +1,7 @@
-package windows.panels.subpanels;
+package windows.calendarWindow.panels.subpanels;
 
-import windows.panels.subpanels.parts.LowerPart;
-import windows.panels.subpanels.parts.UpperPart;
+import windows.calendarWindow.panels.subpanels.parts.LowerPart;
+import windows.calendarWindow.panels.subpanels.parts.UpperPart;
 
 import javax.swing.*;
 import java.awt.*;
