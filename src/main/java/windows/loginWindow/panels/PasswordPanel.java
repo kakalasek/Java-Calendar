@@ -1,5 +1,7 @@
 package windows.loginWindow.panels;
 
+import utils.Utils;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -17,17 +19,14 @@ public class PasswordPanel extends JPanel{
 
         this.setLayout(new FlowLayout(FlowLayout.CENTER));
 
-        this.setMinimumSize(new Dimension(width, height));
-        this.setPreferredSize(new Dimension(width, height));
-        this.setMaximumSize(new Dimension(width, height));
+        Utils.setupDimensions(this, new Dimension(width, height));
 
         JLabel usernameLabel = new JLabel("Zadejte heslo:");
         this.add(usernameLabel);
 
         passwordField = new JTextField();
-        passwordField.setMinimumSize(new Dimension(FIELD_WIDTH, FIELD_HEIGHT));
-        passwordField.setPreferredSize(new Dimension(FIELD_WIDTH, FIELD_HEIGHT));
-        passwordField.setMaximumSize(new Dimension(FIELD_WIDTH, FIELD_HEIGHT));
+
+        Utils.setupDimensions(passwordField, new Dimension(FIELD_WIDTH, FIELD_HEIGHT));
         this.add(passwordField);
 
     }

@@ -1,4 +1,4 @@
-package database;
+package database.connection;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;

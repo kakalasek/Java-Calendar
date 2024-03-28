@@ -1,5 +1,7 @@
 package windows.calendarWindow.panels.subpanels;
 
+import jdk.jshell.execution.Util;
+import utils.Utils;
 import windows.calendarWindow.panels.subpanels.parts.LowerPart;
 import windows.calendarWindow.panels.subpanels.parts.UpperPart;
 
@@ -20,9 +22,7 @@ public class DayPanel extends JPanel {
         gbc.fill = GridBagConstraints.BOTH;
         gbc.weightx = 1.0;
 
-        this.setMinimumSize(new Dimension(baseWidth, baseHeight));
-        this.setPreferredSize(new Dimension(baseWidth, baseHeight));
-        this.setMaximumSize(new Dimension(baseWidth, baseHeight));
+        Utils.setupDimensions(this, new Dimension(baseWidth, baseHeight));
 
         this.setBorder(BorderFactory.createLineBorder(Color.black));
 

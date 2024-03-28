@@ -1,5 +1,7 @@
 package windows.calendarWindow.panels.subpanels.parts;
 
+import utils.Utils;
+
 import javax.swing.*;
 import javax.swing.border.CompoundBorder;
 import java.awt.*;
@@ -15,9 +17,7 @@ public class UpperPart extends JPanel {
 
         this.setLayout(new BorderLayout());
 
-        this.setMinimumSize(new Dimension(baseWidth, baseHeight));
-        this.setPreferredSize(new Dimension(baseWidth, baseHeight));
-        this.setMaximumSize(new Dimension(baseWidth, baseHeight));
+        Utils.setupDimensions(this, new Dimension(baseWidth, baseHeight));
 
         this.setBorder(new CompoundBorder(BorderFactory.createMatteBorder(0,0,2, 0, Color.black), BorderFactory.createEmptyBorder(10, 10, 10, 10)));
 

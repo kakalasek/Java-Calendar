@@ -1,6 +1,7 @@
 package windows.calendarWindow.panels;
 
 import calendarHandler.CalendarHandler;
+import utils.Utils;
 import windows.calendarWindow.panels.subpanels.DayPanel;
 
 import javax.swing.*;
@@ -25,9 +26,7 @@ public class CalendarPanel extends JPanel {
 
         this.setLayout(new FlowLayout(FlowLayout.LEFT, 1, 2));
 
-        this.setMinimumSize(new Dimension(baseWidth, baseHeight));
-        this.setPreferredSize(new Dimension(baseWidth, baseHeight));
-        this.setMaximumSize(new Dimension(baseWidth, baseHeight));
+        Utils.setupDimensions(this, new Dimension(baseWidth, baseHeight));
 
         for(int i = 0; i < CalendarHandler.getDaysInMonth(currentMonth, currentYear); i++){
             this.add(new DayPanel(DAY_WIDTH, DAY_HEIGHT, new String[]{String.valueOf(i+1), CalendarHandler.getDayOfWeek(i+1, currentMonth, currentYear)}, getMonthYear.get()));

@@ -3,6 +3,7 @@ package windows.calendarWindow.panels.subpanels.parts;
 import fileHandler.FileHandler;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
+import utils.Utils;
 
 import javax.swing.*;
 import java.awt.*;
@@ -65,9 +66,7 @@ public class LowerPart extends JPanel {
 
             this.setLayout(new BorderLayout());
 
-            this.setMinimumSize(new Dimension(baseWidth, baseHeight));
-            this.setPreferredSize(new Dimension(baseWidth, baseHeight));
-            this.setMaximumSize(new Dimension(baseWidth, baseHeight));
+            Utils.setupDimensions(this, new Dimension(baseWidth, baseHeight));
 
             /* Components */
 
