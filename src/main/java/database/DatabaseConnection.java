@@ -33,6 +33,7 @@ public class DatabaseConnection {
         if(connection != null){
             connection.close();
             connection = null;
+            return;
         }
         throw new NullPointerException("There is no active connection!");
     }
