@@ -11,6 +11,7 @@ import java.util.Properties;
 public class DatabaseConnection {
 
     private static Connection connection = null;
+    public static int status = 0;
 
     public static void connect() throws IOException, SQLException {
         if(connection == null){
@@ -21,6 +22,8 @@ public class DatabaseConnection {
             prop.load(ip);
 
             connection = DriverManager.getConnection(prop.getProperty("url"), prop.getProperty("username"), prop.getProperty("password"));
+
+            status = 1;
         }
     }
 
@@ -33,6 +36,7 @@ public class DatabaseConnection {
         if(connection != null){
             connection.close();
             connection = null;
+            status = 0;
             return;
         }
         throw new NullPointerException("There is no active connection!");
