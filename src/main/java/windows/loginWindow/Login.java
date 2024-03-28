@@ -1,6 +1,7 @@
 package windows.loginWindow;
 
 import windows.loginWindow.panels.PasswordPanel;
+import windows.loginWindow.panels.SubmitPanel;
 import windows.loginWindow.panels.UsernamePanel;
 
 import javax.swing.*;
@@ -10,8 +11,8 @@ public class Login extends JFrame {
 
     public Login(){
         /* Constants */
-        final int BASE_WIDTH = 500;
-        final int PART_BASE_HEIGHT = 250;
+        final int BASE_WIDTH = 300;
+        final int PART_BASE_HEIGHT = 100;
 
         /* Config */
 
@@ -19,13 +20,16 @@ public class Login extends JFrame {
 
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
-        this.setLayout(new GridLayout(2, 1));
+        this.setLayout(new GridLayout(3, 1));
 
         UsernamePanel usernamePanel = new UsernamePanel(BASE_WIDTH, PART_BASE_HEIGHT);
         this.add(usernamePanel);
 
         PasswordPanel passwordPanel = new PasswordPanel(BASE_WIDTH, PART_BASE_HEIGHT);
         this.add(passwordPanel);
+
+        SubmitPanel submitPanel = new SubmitPanel(BASE_WIDTH, PART_BASE_HEIGHT, usernamePanel.getUsernameField(), passwordPanel.getPasswordField());
+        this.add(submitPanel);
 
         this.pack();
 
