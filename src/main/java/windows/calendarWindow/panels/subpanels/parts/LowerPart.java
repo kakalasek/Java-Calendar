@@ -1,5 +1,6 @@
 package windows.calendarWindow.panels.subpanels.parts;
 
+import exceptionHandler.ExceptionHandler;
 import fileHandler.FileHandler;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
@@ -9,8 +10,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 
 /**
@@ -64,7 +63,8 @@ public class LowerPart extends JPanel {
         try {
             s = FileHandler.readFile(noteFilepath);  // Reads the contents of the notes file into string s
         } catch (IOException e){
-            System.out.println("Could not read note!\n" + e.getMessage() + "\n\n");
+            ExceptionHandler.log("Could not read note!\n" + e.getMessage() + "\n\n");
+            ExceptionHandler.displayError("Read Error!");
         }
         JSONObject file;    // Initializes json object
 
@@ -79,9 +79,10 @@ public class LowerPart extends JPanel {
         file.put(identifier, notes.getText());  // Puts the note with its identifier into the file
 
         try {
-            FileHandler.writeFile(noteFilepath, file.toJSONString());   // Writes everything back to the notes file
+            FileHandler.writeFile(noteFilepath, file.toJSONString(), false);   // Writes everything back to the notes file
         }catch (IOException e){
-            System.out.println("Could not save note!\n" + e.getMessage() + "\n\n");
+            ExceptionHandler.log("Could not save note!\n" + e.getMessage() + "\n\n");
+            ExceptionHandler.displayError("Write Error!");
         }
     }
 
@@ -95,7 +96,8 @@ public class LowerPart extends JPanel {
         try {
             s = FileHandler.readFile(noteFilepath);  // Reads the contents of the notes file into String s
         }catch (IOException e){
-            System.out.println("Could not read note!\n" + e.getMessage() + "\n\n");
+            ExceptionHandler.log("Could not read note!\n" + e.getMessage() + "\n\n");
+            ExceptionHandler.displayError("Read Error!");
             return "";  // If a note cant be read, return an empty string
         }
         JSONObject file;    // Initializes json object

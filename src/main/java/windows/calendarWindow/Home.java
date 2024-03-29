@@ -1,11 +1,11 @@
 package windows.calendarWindow;
 
+import exceptionHandler.ExceptionHandler;
 import windows.calendarWindow.panels.CalendarPanel;
 import windows.calendarWindow.panels.UpperPanel;
 
 import javax.swing.*;
 import java.awt.*;
-import java.io.IOException;
 
 /**
  * A class which represents the home window
@@ -34,6 +34,8 @@ public class Home extends JFrame {
             UpperPanel upperPanel = new UpperPanel(BASE_WIDTH, UPPER_BASE_HEIGHT);
             CalendarPanel calendarPanel = new CalendarPanel(BASE_WIDTH, CALENDAR_BASE_HEIGHT, upperPanel::getCurrentMonthYear);
             upperPanel.setCalendar(calendarPanel);
+
+            ExceptionHandler.initializeErrorPanel(upperPanel);
 
             /* Position UpperPanel */
             gbc.weighty = 0.0;

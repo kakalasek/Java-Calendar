@@ -1,6 +1,7 @@
 package windows.calendarWindow.panels;
 
 import calendarHandler.CalendarHandler;
+import exceptionHandler.ExceptionHandler;
 import utils.Utils;
 
 import javax.swing.*;
@@ -8,7 +9,6 @@ import javax.swing.border.CompoundBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
 import java.util.Objects;
 
 /**
@@ -32,7 +32,7 @@ public class UpperPanel extends JPanel {
         final int MONTHS_BOX_HEIGHT = 30;
 
         /* Start Setup */
-        this.setLayout(new FlowLayout(FlowLayout.CENTER, 60, 40));
+        this.setLayout(new FlowLayout(FlowLayout.CENTER, 20, 40));
         Utils.setupDimensions(this, new Dimension(baseWidth, baseHeight));
         this.setBorder(new CompoundBorder(BorderFactory.createMatteBorder(0,0,2, 0, Color.black), BorderFactory.createEmptyBorder(10, 10, 10, 10)));
 
@@ -46,7 +46,6 @@ public class UpperPanel extends JPanel {
                     calendar.reset();
             }
         });
-
         this.add(monthsBox);
 
     }

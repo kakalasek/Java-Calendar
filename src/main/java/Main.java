@@ -1,5 +1,5 @@
 import database.connection.DatabaseConnection;
-import windows.calendarWindow.Home;
+import exceptionHandler.ExceptionHandler;
 import windows.loginWindow.Login;
 
 import java.io.IOException;
@@ -14,8 +14,8 @@ public class Main {
 
             if (DatabaseConnection.status > 0) DatabaseConnection.closeConnection();
         } catch (IOException | SQLException e) {
+            ExceptionHandler.log(e.getMessage());
             throw new RuntimeException(e);
         }
     }
 }
-
