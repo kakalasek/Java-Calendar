@@ -4,22 +4,28 @@ import windows.loginWindow.Login;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.time.LocalDate;
-import java.time.format.TextStyle;
-import java.util.Locale;
 
 public class Main {
-    public static void main(String[] args) throws SQLException {
+    public static void main(String[] args) {
         try {
-            DatabaseConnection.connect();
+            DatabaseConnection.connect();   // CODE
 
-            new Login();
+            new Login();                    // CODE
         } catch (SQLException e) {
-            new Home();
+            try {
+                new Home();                 // CODE
+            }catch (IOException ex){
+                ex.printStackTrace();
+            }
         } catch (IOException e) {
             throw new RuntimeException(e);
         } finally {
-            if(DatabaseConnection.status > 0) DatabaseConnection.closeConnection();
+            try {
+            if(DatabaseConnection.status > 0) DatabaseConnection.closeConnection(); // CODE
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+            }
         }
     }
-}
+

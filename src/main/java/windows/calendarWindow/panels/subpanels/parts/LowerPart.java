@@ -11,65 +11,27 @@ import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.io.IOException;
 
+/**
+ * A class which represents the lower part of the day panel
+ */
 public class LowerPart extends JPanel {
 
+    /* Components and constants used outside the constructor */
     JTextArea notes;
     String[] day;
     String[] monthAndYear;
-
     String noteFilepath = "src/main/notes/notes";
 
-    private void saveNote() throws IOException {
-        String s = FileHandler.readFile(noteFilepath);
-        JSONObject file;
-
-        if(s != null) {
-            Object o = JSONValue.parse(s);
-            file = (JSONObject) o;
-        } else {
-            file = new JSONObject();
-        }
-        String identifier = monthAndYear[1] + monthAndYear[0] + day[0];
-
-        file.put(identifier, notes.getText());
-
-        FileHandler.clearFile(noteFilepath);
-
-        FileHandler.writeFile(noteFilepath, file.toJSONString());
-    }
-
-    private String readNote() throws IOException {
-        String s = FileHandler.readFile(noteFilepath);
-        JSONObject file;
-
-        if(s != null) {
-            Object o = JSONValue.parse(s);
-            file = (JSONObject) o;
-        } else {
-            file = new JSONObject();
-        }
-        String identifier = monthAndYear[1] + monthAndYear[0] + day[0];
-
-        if(file.containsKey(identifier)){
-            return (String)file.get(identifier);
-        }
-        return "";
-    }
-
-    public LowerPart(int baseWidth, int baseHeight, String[] day, String[] monthAndYear) {
-
-        try {
+    public LowerPart(int baseWidth, int baseHeight, String[] day, String[] monthAndYear) throws IOException{
+            /* Constants */
             this.day = day;
             this.monthAndYear = monthAndYear;
 
             /* Base Setup */
-
             this.setLayout(new BorderLayout());
-
             Utils.setupDimensions(this, new Dimension(baseWidth, baseHeight));
 
             /* Components */
-
             notes = new JTextArea();
             notes.setLineWrap(true);
             notes.setWrapStyleWord(true);
@@ -92,8 +54,52 @@ public class LowerPart extends JPanel {
                 }
             });
 
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
+
+    /* Methods */
+
+    /**
+     * Saves a note into the notes file. A note is identified by the year, month and day
+     * @throws IOException If something goes wrong
+     */
+    private void saveNote() throws IOException {
+        String s = FileHandler.readFile(noteFilepath);  // Reads the contents of the notes file into string s
+        JSONObject file;    // Initializes json object
+
+        if(s != null) { // If there already is something in the notes file, it is parsed into json object
+            Object o = JSONValue.parse(s);
+            file = (JSONObject) o;
+        } else {    // If the notes file is empty, empty json object is created
+            file = new JSONObject();
+        }
+        String identifier = monthAndYear[1] + monthAndYear[0] + day[0]; // Creating the identifier for the note. It is a concatenated string from year, month and day respectively
+
+        file.put(identifier, notes.getText());  // Puts the note with its identifier into the file
+
+        FileHandler.writeFile(noteFilepath, file.toJSONString());   // Writes everything back to the notes file
+    }
+
+    /**
+     * Reads a note from the notes file, which corresponds to this day
+     * @return Text of the note. If there is no note for this day yet, return an empty string
+     * @throws IOException If something goes wrong
+     */
+    private String readNote() throws IOException {
+        String s = FileHandler.readFile(noteFilepath);  // Reads the contents of the notes file into String s
+        JSONObject file;    // Initializes json object
+
+        if(s != null) { // If there already is something in the notes file, it is parsed into json object
+            Object o = JSONValue.parse(s);
+            file = (JSONObject) o;
+        } else {    // If the notes file is empty, empty json object is created
+            file = new JSONObject();
+        }
+        String identifier = monthAndYear[1] + monthAndYear[0] + day[0]; // Creating the identifier for the note. It is a concatenated string from year, month and day respectively
+
+        if(file.containsKey(identifier)){   // If there is a note for this day already, retrieve it and return it
+            return (String)file.get(identifier);
+        }
+        return "";  // If there is no note for this day, return an empty string
+    }
+
 }
