@@ -9,6 +9,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 /**
@@ -22,7 +24,7 @@ public class LowerPart extends JPanel {
     String[] monthAndYear;
     String noteFilepath = "src/main/notes/notes";
 
-    public LowerPart(int baseWidth, int baseHeight, String[] day, String[] monthAndYear) throws IOException{
+    public LowerPart(int baseWidth, int baseHeight, String[] day, String[] monthAndYear){
             /* Constants */
             this.day = day;
             this.monthAndYear = monthAndYear;
@@ -46,11 +48,7 @@ public class LowerPart extends JPanel {
 
                 @Override
                 public void focusLost(FocusEvent e) {
-                    try {
                         saveNote();
-                    } catch (IOException ex) {
-                        throw new RuntimeException(ex);
-                    }
                 }
             });
 
@@ -60,10 +58,14 @@ public class LowerPart extends JPanel {
 
     /**
      * Saves a note into the notes file. A note is identified by the year, month and day
-     * @throws IOException If something goes wrong
      */
-    private void saveNote() throws IOException {
-        String s = FileHandler.readFile(noteFilepath);  // Reads the contents of the notes file into string s
+    private void saveNote(){
+        String s = null;
+        try {
+            s = FileHandler.readFile(noteFilepath);  // Reads the contents of the notes file into string s
+        } catch (IOException e){
+            System.out.println("Could not read note!\n" + e.getMessage() + "\n\n");
+        }
         JSONObject file;    // Initializes json object
 
         if(s != null) { // If there already is something in the notes file, it is parsed into json object
@@ -76,16 +78,26 @@ public class LowerPart extends JPanel {
 
         file.put(identifier, notes.getText());  // Puts the note with its identifier into the file
 
-        FileHandler.writeFile(noteFilepath, file.toJSONString());   // Writes everything back to the notes file
+        try {
+            FileHandler.writeFile(noteFilepath, file.toJSONString());   // Writes everything back to the notes file
+        }catch (IOException e){
+            System.out.println("Could not save note!\n" + e.getMessage() + "\n\n");
+        }
     }
 
     /**
      * Reads a note from the notes file, which corresponds to this day
      * @return Text of the note. If there is no note for this day yet, return an empty string
-     * @throws IOException If something goes wrong
      */
-    private String readNote() throws IOException {
-        String s = FileHandler.readFile(noteFilepath);  // Reads the contents of the notes file into String s
+    private String readNote() {
+        String s;
+
+        try {
+            s = FileHandler.readFile(noteFilepath);  // Reads the contents of the notes file into String s
+        }catch (IOException e){
+            System.out.println("Could not read note!\n" + e.getMessage() + "\n\n");
+            return "";  // If a note cant be read, return an empty string
+        }
         JSONObject file;    // Initializes json object
 
         if(s != null) { // If there already is something in the notes file, it is parsed into json object

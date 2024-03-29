@@ -25,12 +25,8 @@ public class SubmitPanel extends JPanel{
         Utils.setupDimensions(submitButton, new Dimension(BUTTON_WIDTH, BUTTON_HEIGHT));
 
         submitButton.addActionListener(e -> {
-            try {
                 SwingUtilities.getWindowAncestor(this.getRootPane()).dispose();
                 new Home();
-            } catch(Exception ex){
-                ex.printStackTrace();
-            }
         });
 
         this.add(submitButton);

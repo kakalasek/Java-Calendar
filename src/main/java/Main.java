@@ -8,24 +8,14 @@ import java.sql.SQLException;
 public class Main {
     public static void main(String[] args) {
         try {
-            DatabaseConnection.connect();   // CODE
+            DatabaseConnection.connect();
 
-            new Login();                    // CODE
-        } catch (SQLException e) {
-            try {
-                new Home();                 // CODE
-            }catch (IOException ex){
-                ex.printStackTrace();
-            }
-        } catch (IOException e) {
+            new Login();
+
+            if (DatabaseConnection.status > 0) DatabaseConnection.closeConnection();
+        } catch (IOException | SQLException e) {
             throw new RuntimeException(e);
-        } finally {
-            try {
-            if(DatabaseConnection.status > 0) DatabaseConnection.closeConnection(); // CODE
-                } catch (SQLException e) {
-                    throw new RuntimeException(e);
-                }
-            }
         }
     }
+}
 

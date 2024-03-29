@@ -27,7 +27,7 @@ public class UsernamePanel extends JPanel {
         this.add(usernameLabel);
 
         usernameField = new JTextField();
-        Utils.setupDimensions(this, new Dimension(FIELD_WIDTH, FIELD_HEIGHT));
+        Utils.setupDimensions(usernameField, new Dimension(FIELD_WIDTH, FIELD_HEIGHT));
         this.add(usernameField);
 
     }

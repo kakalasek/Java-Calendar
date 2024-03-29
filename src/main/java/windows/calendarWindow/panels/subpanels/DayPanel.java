@@ -13,7 +13,7 @@ import java.io.IOException;
  */
 public class DayPanel extends JPanel {
 
-    public DayPanel(int baseWidth, int baseHeight, String[] day, String[] monthAndYear) throws IOException {
+    public DayPanel(int baseWidth, int baseHeight, String[] day, String[] monthAndYear) {
         /* Constants */
         final int BASE_UPPER_HEIGHT = 40;
 

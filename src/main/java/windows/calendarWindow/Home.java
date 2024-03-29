@@ -12,7 +12,7 @@ import java.io.IOException;
  */
 public class Home extends JFrame {
 
-    public Home() throws IOException {
+    public Home() {
         /* Constants */
         final int BASE_WIDTH = 1500;
         final int UPPER_BASE_HEIGHT = 100;

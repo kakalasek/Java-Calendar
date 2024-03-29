@@ -14,7 +14,6 @@ public class Login extends JFrame {
 
 
     public Login(){
-
         /* Constants */
         final int BASE_WIDTH = 300;
         final int PART_BASE_HEIGHT = 100;

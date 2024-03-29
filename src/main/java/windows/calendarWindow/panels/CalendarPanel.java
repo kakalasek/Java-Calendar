@@ -21,7 +21,7 @@ public class CalendarPanel extends JPanel {
     private String currentMonth;
     private int currentYear;
 
-    public CalendarPanel(int baseWidth, int baseHeight, Supplier<String[]> getMonthYear) throws IOException {
+    public CalendarPanel(int baseWidth, int baseHeight, Supplier<String[]> getMonthYear) {
         /* Constants */
         this.getMonthYear = getMonthYear;
         this.currentMonth = getMonthYear.get()[0];
@@ -42,7 +42,7 @@ public class CalendarPanel extends JPanel {
     /**
      * Resets the day panels, when month is changed
      */
-    public void reset() throws IOException {
+    public void reset() {
         this.removeAll();   // First remove all current ones
 
         this.currentMonth = getMonthYear.get()[0];  // Get the selected month

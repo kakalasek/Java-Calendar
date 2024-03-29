@@ -43,11 +43,7 @@ public class UpperPanel extends JPanel {
         monthsBox.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                try {
                     calendar.reset();
-                } catch (IOException ex) {
-                    throw new RuntimeException(ex);
-                }
             }
         });
 
