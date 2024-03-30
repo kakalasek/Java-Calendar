@@ -1,5 +1,6 @@
 package windows.calendarWindow;
 
+import database.objects.user.User;
 import exceptionHandler.ExceptionHandler;
 import windows.calendarWindow.panels.CalendarPanel;
 import windows.calendarWindow.panels.UpperPanel;
@@ -12,11 +13,15 @@ import java.awt.*;
  */
 public class Home extends JFrame {
 
-    public Home() {
+    public static User currentUser = null;  // Is here to keep track of the current user
+
+    public Home(User currentUser) {
         /* Constants */
         final int BASE_WIDTH = 1500;
         final int UPPER_BASE_HEIGHT = 100;
         final int CALENDAR_BASE_HEIGHT = 800;
+
+        Home.currentUser = currentUser;
 
         /* Start Setup */
         this.setTitle("Kalendář");

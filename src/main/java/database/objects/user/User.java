@@ -1,7 +1,8 @@
 package database.objects.user;
 
-import java.util.Optional;
-
+/**
+ * A class which represents a single user
+ */
 public class User{
     private String username;
     private String password;
