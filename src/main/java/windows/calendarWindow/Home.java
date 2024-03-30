@@ -23,7 +23,7 @@ public class Home extends JFrame {
         final int UPPER_BASE_HEIGHT = 100;
         final int CALENDAR_BASE_HEIGHT = 800;
 
-        Home.currentUser = currentUser; // Sets the current user. If
+        Home.currentUser = currentUser; // Sets the current user
         Home.homeFrame = this;   // Sets the home frame... used to monitor window close events
 
         /* Start Setup */

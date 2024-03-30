@@ -63,7 +63,7 @@ public class LowerPart extends JPanel {
 
             @Override
             public void windowClosing(WindowEvent e) {
-                if(!notes.getText().isEmpty()) saveNote();
+                if(!notes.getText().isEmpty()) saveNote();  // If the user closes the window after writing a note, the note gets saved
             }
 
             @Override
