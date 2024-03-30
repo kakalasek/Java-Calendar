@@ -8,12 +8,14 @@ import java.sql.SQLException;
 public class Main {
     public static void main(String[] args) {
         try {
-            DatabaseConnection.connect();
+            ExceptionHandler.clearLogs();   // Clears logs
 
-            new Login();
+            DatabaseConnection.connect();   // Tries to establish a database connection
 
-            if (DatabaseConnection.status > 0) DatabaseConnection.closeConnection();
-        } catch (IOException | SQLException e) {
+            new Login();    // Creates the login windows
+
+            if (DatabaseConnection.status > 0) DatabaseConnection.closeConnection();    // If there was a database connection, close it
+        } catch (IOException | SQLException e) {    // If any of these errors happens, the program will crash
             ExceptionHandler.log(e.getMessage());
             throw new RuntimeException(e);
         }

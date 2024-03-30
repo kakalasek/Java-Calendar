@@ -15,13 +15,16 @@ public class Home extends JFrame {
 
     public static User currentUser = null;  // Is here to keep track of the current user
 
+    public static Home homeFrame = null;
+
     public Home(User currentUser) {
         /* Constants */
         final int BASE_WIDTH = 1500;
         final int UPPER_BASE_HEIGHT = 100;
         final int CALENDAR_BASE_HEIGHT = 800;
 
-        Home.currentUser = currentUser;
+        Home.currentUser = currentUser; // Sets the current user. If
+        Home.homeFrame = this;   // Sets the home frame... used to monitor window close events
 
         /* Start Setup */
         this.setTitle("Kalendář");

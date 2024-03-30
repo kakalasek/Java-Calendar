@@ -5,11 +5,14 @@ import fileHandler.FileHandler;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
 import utils.Utils;
+import windows.calendarWindow.Home;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import java.io.IOException;
 
 /**
@@ -37,7 +40,6 @@ public class LowerPart extends JPanel {
             notes.setLineWrap(true);
             notes.setWrapStyleWord(true);
             notes.setText(readNote());
-            this.add(notes, BorderLayout.CENTER);
 
             notes.addFocusListener(new FocusListener() {
                 @Override
@@ -47,10 +49,48 @@ public class LowerPart extends JPanel {
 
                 @Override
                 public void focusLost(FocusEvent e) {
-                        saveNote();
+                    if(!notes.getText().isEmpty()) saveNote();
                 }
             });
 
+            this.add(notes, BorderLayout.CENTER);
+
+        Home.homeFrame.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {
+
+            }
+
+            @Override
+            public void windowClosing(WindowEvent e) {
+                if(!notes.getText().isEmpty()) saveNote();
+            }
+
+            @Override
+            public void windowClosed(WindowEvent e) {
+
+            }
+
+            @Override
+            public void windowIconified(WindowEvent e) {
+
+            }
+
+            @Override
+            public void windowDeiconified(WindowEvent e) {
+
+            }
+
+            @Override
+            public void windowActivated(WindowEvent e) {
+
+            }
+
+            @Override
+            public void windowDeactivated(WindowEvent e) {
+
+            }
+        });
     }
 
     /* Methods */

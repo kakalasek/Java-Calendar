@@ -65,4 +65,15 @@ public class ExceptionHandler {
 
         }
     }
+
+    /**
+     * Clear all logs, so they won't bloat your computer
+     */
+    public static void clearLogs(){
+        try {
+            FileHandler.writeFile(logsFilePath, "", false);
+        } catch(IOException ex){
+            displayError("Error clearing logs!");
+        }
+    }
 }
