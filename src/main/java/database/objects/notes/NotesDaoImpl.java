@@ -8,12 +8,19 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Map;
-import java.util.Optional;
 
+/**
+ * A class which holds method to get and insert notes into database
+ */
 public class NotesDaoImpl implements NotesDao{
 
     private final String notesTableName = "notes";
 
+    /**
+     * Retrieves all notes of a particular user
+     * @param username Username of the user
+     * @return A Hashmap of all the notes for the specified user
+     */
     @Override
     public Notes getAllByUser(String username) {
         Notes notes = new Notes();
@@ -39,6 +46,10 @@ public class NotesDaoImpl implements NotesDao{
         return notes;
     }
 
+    /**
+     * Saves all notes into a database
+     * @param notes The Hashmap of notes we want to save
+     */
     @Override
     public void saveAll(Notes notes) {
 
