@@ -21,10 +21,10 @@ import java.io.IOException;
 public class LowerPart extends JPanel {
 
     /* Components and constants used outside the constructor */
-    JTextArea notes;
-    String[] day;
-    String[] monthAndYear;
-    String noteFilepath = "src/main/notes/notes";
+    private final JTextArea notes;
+    private final String[] day;
+    private final String[] monthAndYear;
+    private final String noteFilepath = "src/main/notes/notes";
 
     public LowerPart(int baseWidth, int baseHeight, String[] day, String[] monthAndYear){
             /* Constants */

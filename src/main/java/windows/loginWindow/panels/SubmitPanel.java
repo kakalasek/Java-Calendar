@@ -3,16 +3,23 @@ package windows.loginWindow.panels;
 import database.connection.DatabaseConnection;
 import database.objects.user.User;
 import database.objects.user.UserDaoImpl;
+import exceptionHandler.ExceptionHandler;
+import fileHandler.FileHandler;
 import utils.Utils;
 import windows.calendarWindow.Home;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.IOException;
 
 /**
  * A class which represent a panel with submitting login
  */
 public class SubmitPanel extends JPanel{
+
+    private final String noteFilepath = "src/main/notes/notes";
 
     public SubmitPanel(int baseWidth, int baseHeight, JTextField usernameField, JTextField passwordField){
         /* Constants */
@@ -48,5 +55,24 @@ public class SubmitPanel extends JPanel{
         });
 
         this.add(submitButton);
+
+        JButton clearButton = new JButton("C");
+        Utils.setupDimensions(clearButton, new Dimension(45, BUTTON_HEIGHT));
+
+        clearButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                try{
+
+                    FileHandler.writeFile(noteFilepath, "", false);
+
+                } catch (IOException e) {
+                ExceptionHandler.log("Could not clear notes!\n" + e.getMessage() + "\n\n");
+                ExceptionHandler.displayError("Write Error!");
+            }
+            }
+        });
+
+        this.add(clearButton);
     }
 }

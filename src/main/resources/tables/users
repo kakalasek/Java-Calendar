@@ -1,0 +1,8 @@
+-- This script is usable for MariaDB SQL
+
+CREATE TABLE users(
+    id INT AUTO_INCREMENT,
+    username VARCHAR(120) NOT NULL UNIQUE,
+    password VARCHAR(256) NOT NULL,
+    PRIMARY KEY(id)
+);

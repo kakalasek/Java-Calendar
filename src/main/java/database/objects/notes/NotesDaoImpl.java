@@ -14,8 +14,6 @@ import java.util.Map;
  */
 public class NotesDaoImpl implements NotesDao{
 
-    private final String notesTableName = "notes";
-
     /**
      * Retrieves all notes of a particular user
      * @param username Username of the user
@@ -25,12 +23,11 @@ public class NotesDaoImpl implements NotesDao{
     public Notes getAllByUser(String username) {
         Notes notes = new Notes();
 
-        String select = "SELECT identifier, note FROM ? WHERE user_id = (SELECT id FROM users WHERE username = ?)";
+        String select = "SELECT identifier, note FROM notes WHERE user_id = (SELECT id FROM users WHERE username = ?)";
 
         try(PreparedStatement ps = DatabaseConnection.prepareStatement(select)){
 
-            ps.setString(1, notesTableName);
-            ps.setString(2, Home.currentUser.getUsername());
+            ps.setString(1, Home.currentUser.getUsername());
 
             try(ResultSet rs = ps.executeQuery()) {
                 while (rs.next()) {
@@ -53,21 +50,20 @@ public class NotesDaoImpl implements NotesDao{
     @Override
     public void saveAll(Notes notes) {
 
-        String insert = "INSERT INTO ?(user_id, note, identifier) VALUES ((SELECT id FROM users WHERE username = ?), ?, ?) " +
+        String insert = "INSERT INTO notes(user_id, note, identifier) VALUES ((SELECT id FROM users WHERE username = ?), ?, ?) " +
                 "ON DUPLICATE KEY UPDATE note=?";
 
         try(PreparedStatement ps = DatabaseConnection.prepareStatement(insert)){
 
-            ps.setString(1, notesTableName);
-            ps.setString(2, Home.currentUser.getUsername());
+            ps.setString(1, Home.currentUser.getUsername());
 
             for (Map.Entry<String, String> entry : notes.entrySet()) {
                 String k = entry.getKey();
                 String v = entry.getValue();
 
-                ps.setString(3, v);
-                ps.setString(4, k);
-                ps.setString(5, v);
+                ps.setString(2, v);
+                ps.setString(3, k);
+                ps.setString(4, v);
 
                 ps.execute();
             }
