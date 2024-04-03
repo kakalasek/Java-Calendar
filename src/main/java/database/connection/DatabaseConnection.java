@@ -78,9 +78,10 @@ public class DatabaseConnection {
      */
     public static PreparedStatement prepareStatement(String sql) throws NullPointerException, SQLException {
         if(connection != null) {
-            try(PreparedStatement ps = connection.prepareStatement(sql)) {
-                return ps;
-            }catch (SQLException e){
+            try {
+                return connection.prepareStatement(sql);
+
+            }catch (SQLException e) {
                 throw new SQLException("Something went wrong with creating prepared statement!", e);
             }
         } else {

@@ -12,9 +12,6 @@ import java.sql.SQLException;
  */
 public class UserDaoImpl implements UserDao{
 
-    /* Table Names */
-    private final String userTableName = "users";
-
     /**
      * Retrieves a user from database by its username
      * @param username  Username of the user we want to get
@@ -24,12 +21,11 @@ public class UserDaoImpl implements UserDao{
     public User getByUsername(String username) {
         User user = null;
 
-        String select = "SELECT * FROM ? WHERE username = ?";
+        String select = "SELECT * FROM users WHERE username = ?";
 
         try(PreparedStatement ps = DatabaseConnection.prepareStatement(select)){
 
-            ps.setString(1, userTableName);
-            ps.setString(2, username);
+            ps.setString(1, username);
 
            try(ResultSet rs = ps.executeQuery()) {
 
@@ -53,12 +49,11 @@ public class UserDaoImpl implements UserDao{
      */
     @Override
     public void save(User user) {
-        String insert = "INSERT INTO ?(username, password) VALUES (?,?)";
+        String insert = "INSERT INTO users(username, password) VALUES (?,?)";
 
         try(PreparedStatement ps = DatabaseConnection.prepareStatement(insert)){
-            ps.setString(1, userTableName);
-            ps.setString(2, user.getUsername());
-            ps.setString(3, user.getPassword());
+            ps.setString(1, user.getUsername());
+            ps.setString(2, user.getPassword());
 
             ps.execute();
 

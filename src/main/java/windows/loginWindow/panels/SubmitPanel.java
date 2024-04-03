@@ -48,6 +48,5 @@ public class SubmitPanel extends JPanel{
         });
 
         this.add(submitButton);
-
     }
 }
