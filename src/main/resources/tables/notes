@@ -4,7 +4,8 @@ CREATE TABLE notes(
     id INT AUTO_INCREMENT,
     user_id INT NOT NULL,
     note TEXT,
-    identifier VARCHAR(32) NOT NULL UNIQUE,
+    identifier VARCHAR(32) NOT NULL,
     PRIMARY KEY(id),
-    CONSTRAINT user_id_fk FOREIGN KEY(user_id) REFERENCES users(id)
+    CONSTRAINT user_id_fk FOREIGN KEY(user_id) REFERENCES users(id),
+    CONSTRAINT unique_identifier UNIQUE (user_id, identifier)
 );
