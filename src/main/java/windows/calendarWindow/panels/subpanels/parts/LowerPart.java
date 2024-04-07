@@ -1,5 +1,7 @@
 package windows.calendarWindow.panels.subpanels.parts;
 
+import database.connection.DatabaseConnection;
+import database.objects.notes.NotesDaoImpl;
 import exceptionHandler.ExceptionHandler;
 import fileHandler.FileHandler;
 import org.json.simple.JSONObject;
@@ -64,6 +66,8 @@ public class LowerPart extends JPanel {
             @Override
             public void windowClosing(WindowEvent e) {
                 if(!notes.getText().isEmpty()) saveNote();  // If the user closes the window after writing a note, the note gets saved
+
+
             }
 
             @Override

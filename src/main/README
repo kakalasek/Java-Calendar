@@ -1,0 +1,2 @@
+There is a known bug in this application. If someone was to exit the app while having focus on writing a note and then clear all data in local file, the note wont get saved.
+REASON: I am too lazy to fix it, just don't do it..

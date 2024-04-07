@@ -17,9 +17,6 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Set;
 
 /**
  * A class which represents the home window
@@ -30,7 +27,7 @@ public class Home extends JFrame {
 
     public static Home homeFrame = null;
 
-    private Notes notes = fileIntoObject();
+    public Notes notes = fileIntoObject();
 
     private final String noteFilepath = "src/main/notes/notes";
 
