@@ -1,2 +1,25 @@
 There is a known bug in this application. If someone was to exit the app while having focus on writing a note and then clear all data in local file, the note wont get saved.
 REASON: I am too lazy to fix it, just don't do it..
+
+Dokumentace
+===========
+
+Tento program je mega supr dupr kalendář určený pro zápis aktivit, poznámek na jednotlivé dny
+Jeho použití je relativně intuitivní
+Nabízí plánování na 12 měsíců dopředu .. staré měsíce a poznámky automaticky maže
+Po zapnutí zobrazí okénko s přihlášením .. pokud zapnutí trvá dlouho, je to způsobeno pokusem aplikace o připojení k databázi, které selhalo
+Nastavení databáze lze změnit v souboru s relativní cestou src/main/resources/database/config.properties
+V zadané databázi samozřejmě musí existovat tabulky popsané v souborech src/main/resources/tables/*
+Při selhání připojení k databázi, zadané přihlašovací údaje nemají vliv, uložené informace se berou z lokálního souboru
+Všechny chybové hlášky jsou uloženy v souboru s relativní cestou src/main/logs/logs
+Pokud je připojení k databázi úspěšné je potřeba kliknout na tlačítko označené "C", aby se zmazal lokální soubor
+Údaje z databáze se nahrají do něj a pak se z něj přečtou do jednolivých měsíců .. pokud soubor nesmažeme, může docházet ke konfliktům mezi poznámkami
+Příhlášení je spíše symbolické .. pro rozlišení jednotlivých uživatelů .. hesla nejsou hashována
+Pokud uživatel neexistuje, automaticky se vytvoří
+Data se nahrávají do databáze ihned po dopsání
+
+Poznámky
+========
+BUG: Pokud uživatel vypne aplikaci před dopsáním poznámky (tj. před změnout focusu třeba na jinou buňku), poznámka se neuloží do databáze, pouze do lokálního souboru
+Aplikace je netestovaná .. ano, já vím, měla by být .. já jsem na to zapomněl .. a taky se mi moc nechtělo .. nevadí .. počítá se s tím, že uživatel může něco podělat .. aplikace by měla být dost tolerantní
+Nezapomeňte zaručit, že uživatel, pomocí kterého přistupuje k databázi, má opravdu dostatečná práva
